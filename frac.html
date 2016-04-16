@@ -37,9 +37,11 @@ function canvasApp() {
 	}
 	
 	var displayCanvas = document.getElementById("displayCanvas");
+	displayCanvas.width = window.innerWidth;
+	displayCanvas.height = window.innerHeight;
 	var context = displayCanvas.getContext("2d");
-	var displayWidth = displayCanvas.width;
-	var displayHeight = displayCanvas.height;
+	var displayWidth = displayCanvas.clientWidth;
+	var displayHeight = displayCanvas.clientHeight;
 		
 	//off screen canvas used only when exporting image
 	var exportCanvas = document.createElement('canvas');
@@ -370,20 +372,16 @@ function canvasApp() {
 	p {font-family: sans-serif; color:#888888; font-size:14px;}
 		#caption {position:absolute; width:1920px; text-align:center; top:1080px; z-index:1}
 	a {font-family: sans-serif; color:#d15423; text-decoration:none;}
-	canvas {}
-		#displayCanvas {position:absolute; top:10px; z-index:0;}
-	div {}
-		#container {width:1920px; height:1080px; margin:auto;}
 </style>
 
 </head>
 <body>
 <div id="container"> 
-    <canvas id="displayCanvas" width="1920px" height="1080px" z-index="100">
+    <canvas id="displayCanvas">
         Your browser does not support HTML5 canvas.
     </canvas>
     <form>
-    <p id="caption">
+    <p id="caption" style="opacity: 0">
         HTML5 Canvas - Morphing Fractal Curve.&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="checkbox", id="cbColor">randomize colors</input>
         <input type="button", id="btnRegenerate" value="regenerate"/>
