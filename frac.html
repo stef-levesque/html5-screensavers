@@ -102,14 +102,13 @@ function canvasApp() {
 		
 		lineWidth = 2;
 		
+		context.clearRect(0,0,displayWidth,displayHeight);
 		startGenerate();
 	}
 	
 	function startGenerate() {
 		drawCount = 0;
 		context.setTransform(1,0,0,1,0,0);
-		
-		context.clearRect(0,0,displayWidth,displayHeight);
 		
 		setCircles();
 		
@@ -163,7 +162,8 @@ function canvasApp() {
 						
 			var newCircle = {
 				centerX: -maxMaxRad,
-				centerY: displayHeight/2-50,
+				centerY: displayHeight * Math.random(),
+				deltaY: 0.04 * (Math.random() * 2 - 1),
 				maxRad : maxR,
 				minRad : minR,
 				color: grad, //can set a gradient or solid color here.
@@ -222,12 +222,13 @@ function canvasApp() {
 				
 				//move center
 				c.centerX += 0.5;
-				c.centerY += 0.04;
+				c.centerY += c.deltaY;
 				yOffset = 40*Math.sin(c.globalPhase + drawCount/2500*TWO_PI);
 				//stop when off screen
 				if (c.centerX > displayWidth + maxMaxRad) {
 					clearInterval(timer);
 					timer = null;
+					startGenerate();
 				}			
 				
 				//we are drawing in new position by applying a transform. We are doing this so the gradient will move with the drawing.
