@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<!-- from http://rectangleworld.com/blog/archives/462 -->
 <meta charset="UTF-8">
 
 <title>HTML5 Canvas</title>
@@ -169,9 +170,9 @@ function canvasApp() {
 				maxRad : maxR,
 				minRad : minR,
 				color: grad, //can set a gradient or solid color here.
-				fillColor: "rgba(0,0,0,1)",
+				fillColor: "rgba(0,0,0,0.01)",
 				param : 0,
-				changeSpeed : 1/220,
+				changeSpeed : 1/250,
 				phase : Math.random()*TWO_PI, //the phase to use for a single fractal curve.
 				globalPhase: phase + (2*Math.random() - 1)*phaseVariance, //the curve as a whole will rise and fall by a sinusoid.
 				};
