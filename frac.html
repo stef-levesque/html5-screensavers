@@ -11,6 +11,21 @@
 
 <script type="text/javascript">
 
+var timer;
+var fadeInBuffer = false;
+document.onmousemove = function(e) {
+	if (timer) {
+		clearTimeout(timer);
+		timer = 0;
+		document.querySelector('html').style.cursor = '';
+	}
+	
+	timer = setTimeout(function () {
+		document.querySelector('html').style.cursor = 'none';
+	}, 2000);
+	
+}
+
 window.addEventListener("load", windowLoadHandler, false);
 
 function windowLoadHandler() {
