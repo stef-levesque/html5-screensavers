@@ -36,8 +36,8 @@ function randValue(arr) {
 function circleApp() {
 	
 	var container;
-	var lifetime = 10;	//in seconds
-	var spawnRate = 3;	//circle per seconds
+	var lifetime = 7.0;	//in seconds
+	var spawnRate = 1.5;	//circle per seconds
 	var colors = [
 		'aqua', 'chartreuse', 'cyan', 'darkorange', 'darkorchid',
 		'deeppink', 'deepskyblue', 'fuchsia', 'gold', 'goldenrod',
@@ -69,6 +69,7 @@ function circleApp() {
 		c.style.top = xpos + 'px';
 		c.style.left = ypos + 'px';
 		c.style.borderColor = randValue(colors);
+		c.style.zIndex = -Math.floor(xpos);
 		c.classList.add('circle');
 		container.appendChild(c);
 		setTimeout(function(){
@@ -87,23 +88,26 @@ body {
 	color:#888888; 
 	overflow: hidden; 
 	margin: 0px
-} 
+}
+
+#container {
+	-webkit-filter: blur(2px);
+}
 
 .circle {
 	width: 200px;
 	height: 200px;
 	position: absolute;
-	opacity: 0.7;
-	color: q;
+	opacity: 4.0;
 	border-radius: 200px;
 	border: 10px solid;
-	transition: all 10s ease-out;
-	transform: rotatex(65deg) scale(0.1);
+	transition: all 7s ease-out;
+	transform: rotatex(75deg) scale(0.1);
 }
 
 .anim {
 	opacity: 0.0;
-	transform: rotatex(65deg) scale(10);
+	transform: rotatex(75deg) scale(7);
 }
 </style>
 </head>
